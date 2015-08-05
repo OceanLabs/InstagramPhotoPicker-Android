@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="Theme.InstagramPhotoPicker" parent="android:Theme.DeviceDefault.Light">
+        <item name="android:actionBarStyle">@style/Theme.InstagramPhotoPicker.ActionBar.Opaque</item>
+        <item name="android:actionModeCloseDrawable">@drawable/ic_close_black_24dp</item>
+    </style>
+
+    <style name="Theme.InstagramPhotoPicker.ActionBar" parent="android:Widget.ActionBar">
+        <item name="android:displayOptions">homeAsUp|showTitle</item>
+    </style>
+
+    <style name="Theme.InstagramPhotoPicker.ActionBar.Opaque">
+        <item name="android:background">@color/opaque_action_bar</item>
+    </style>
+
+
+</resources>

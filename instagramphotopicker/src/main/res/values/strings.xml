@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Instagram Photo Picker</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="action_logout">Logout</string>
+    <string name="title_activity_login">Login</string>
+    <string name="title_activity_instagram_gallery">Instagram Photos</string>
+    <string name="loading">Loading&#8230;</string>
+</resources>
