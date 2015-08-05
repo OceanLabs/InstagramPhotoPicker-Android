@@ -9,7 +9,7 @@ It takes care of all authentication with Instagram as and when necessary. It wil
 * Android API Level 14 - Android 4.0 (ICE_CREAM_SANDWICH)
 
 ## Installation
-### CocoaPods
+### Android Studio / Gradle
 
 We publish builds of our library to the Maven central repository as an .aar file. This file contains all of the classes, resources, and configurations that you'll need to use the library. To install the library inside Android Studio, you can simply declare it as dependecy in your build.gradle file.
 
