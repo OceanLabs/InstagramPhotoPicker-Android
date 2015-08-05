@@ -1,4 +1,4 @@
-# iOS Instagram Image Picker
+# Android Instagram Image Picker
 
 A Instagram image picker providing a simple UI for a user to pick photos from their Instagram account. 
 
