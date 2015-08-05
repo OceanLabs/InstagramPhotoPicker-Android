@@ -42,7 +42,7 @@ static final int REQUEST_CODE_INSTAGRAM_PICKER = 1;
 InstagramPhotoPicker.startPhotoPickerForResult(this, CLIENT_ID, REDIRECT_URI, REQUEST_CODE_INSTAGRAM_PICKER);
 ```
 
-Implement the `OLInstagramImagePickerControllerDelegate` protocol:
+Implement `onActivityResult`:
 
 ```java
 
