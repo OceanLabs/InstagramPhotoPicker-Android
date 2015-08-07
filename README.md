@@ -4,6 +4,8 @@ A Instagram image picker providing a simple UI for a user to pick photos from th
 
 It takes care of all authentication with Instagram as and when necessary. It will automatically renew auth tokens or prompt the user to re-authorize the app if needed. 
 
+![Preview](https://github.com/OceanLabs/InstagramPhotoPicker-Android/raw/master/preview.gif)
+
 ## Requirements
 
 * Android API Level 14 - Android 4.0 (ICE_CREAM_SANDWICH)
