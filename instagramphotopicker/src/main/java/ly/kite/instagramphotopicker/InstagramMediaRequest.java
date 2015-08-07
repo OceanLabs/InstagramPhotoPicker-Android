@@ -1,6 +1,8 @@
 package ly.kite.instagramphotopicker;
 
 import android.os.AsyncTask;
+import android.os.Parcel;
+import android.os.Parcelable;
 
 import org.apache.http.HttpResponse;
 import org.apache.http.client.HttpClient;
@@ -21,7 +23,7 @@ import java.util.List;
 /**
  * Created by deon on 03/08/15.
  */
-public class InstagramMediaRequest {
+public class InstagramMediaRequest implements Parcelable {
 
     private static final String GENERIC_NETWORK_EXCEPTION_MESSAGE = "Failed to reach Instagram. Please check your internet connectivity and try again";
     private static final String MEDIA_URL_ENDPOINT = "https://api.instagram.com/v1/users/self/media/recent";
@@ -153,5 +155,29 @@ public class InstagramMediaRequest {
         private List<InstagramPhoto> photos;
         private InstagramMediaRequest nextPageRequest;
     }
+
+    public InstagramMediaRequest(Parcel in){
+        baseURL = in.readString();
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(baseURL);
+    }
+
+    public static final Parcelable.Creator CREATOR = new Parcelable.Creator() {
+        public InstagramMediaRequest createFromParcel(Parcel in) {
+            return new InstagramMediaRequest(in);
+        }
+
+        public InstagramMediaRequest[] newArray(int size) {
+            return new InstagramMediaRequest[size];
+        }
+    };
 
 }

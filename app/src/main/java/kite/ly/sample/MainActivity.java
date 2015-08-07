@@ -9,6 +9,7 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Toast;
 
 import java.util.Arrays;
 
@@ -62,13 +63,14 @@ public class MainActivity extends ActionBarActivity {
                 Parcelable[] photos = data.getParcelableArrayExtra(InstagramPhotoPicker.EXTRA_SELECTED_PHOTOS);
                 InstagramPhoto[] instagramPhotos = new InstagramPhoto[photos.length];
                 System.arraycopy(photos, 0, instagramPhotos, 0, photos.length);
-                Log.i("dbotha", "User selected " + instagramPhotos.length + " Instagram photos");
+
+                Toast.makeText(this, "User selected " + instagramPhotos.length + " Instagram photos", Toast.LENGTH_SHORT).show();
                 for (int i = 0; i < instagramPhotos.length; ++i) {
                     Log.i("dbotha", "Photo: " + instagramPhotos[i].getFullURL());
                 }
 
              } else if (resultCode == Activity.RESULT_CANCELED) {
-                Log.i("dbotha", "Instagram Picking Cancelled");
+                Toast.makeText(this, "Instagram Picking Cancelled", Toast.LENGTH_SHORT).show();
             } else {
                 Log.i("dbotha", "Unknown result code: " + resultCode);
             }

@@ -5,6 +5,8 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Parcel;
+import android.os.Parcelable;
 import android.util.Log;
 import android.view.ActionMode;
 import android.view.LayoutInflater;
@@ -21,6 +23,7 @@ import com.paging.gridview.PagingBaseAdapter;
 import com.paging.gridview.PagingGridView;
 import com.squareup.picasso.Picasso;
 
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
@@ -30,7 +33,13 @@ import kite.ly.instagramphotopicker.R;
 
 public class InstagramGalleryActivity extends Activity {
 
+    private static final String KEY_SELECTED_PHOTOS = "ly.kite.instagramphotopicker.KEY_SELECTED_PHOTOS";
+    private static final String KEY_HAS_MORE_PHOTOS = "ly.kite.instagramphotopicker.KEY_HAS_MORE_PHOTOS";
+    private static final String KEY_FETCHED_PHOTOS = "ly.kite.instagramphotopicker.KEY_FETCHED_PHOTOS";
+    private static final String KEY_NEXT_PAGE_REQUEST = "ly.kite.instagramphotopicker.KEY_NEXT_PAGE_REQUEST";
+
     private static final int REQUEST_CODE_LOGIN = 99;
+    private final HashSet<InstagramPhoto> selectedPhotos = new HashSet<>();
 
     static void startForResult(Activity activity, int requestCode) {
         Intent i = new Intent(activity, InstagramGalleryActivity.class);
@@ -38,6 +47,7 @@ public class InstagramGalleryActivity extends Activity {
     }
 
     private PagingGridView gridView;
+    private InstagramPhotoAdapter adapter;
     private InstagramMediaRequest nextPageRequest;
 
     @Override
@@ -47,8 +57,27 @@ public class InstagramGalleryActivity extends Activity {
 
         nextPageRequest = new InstagramMediaRequest();
         gridView = (PagingGridView) findViewById(R.id.gridview);
-        gridView.setAdapter(new InstagramPhotoAdapter());
-        gridView.setHasMoreItems(true);
+
+        List<InstagramPhoto> photos = new ArrayList<>();
+        boolean hasMoreItems = true;
+        if (savedInstanceState != null) {
+            Parcelable[] fetchedPhotos = savedInstanceState.getParcelableArray(KEY_FETCHED_PHOTOS);
+            for (Parcelable photo : fetchedPhotos) {
+                photos.add((InstagramPhoto) photo);
+            }
+
+            Parcelable[] selected = savedInstanceState.getParcelableArray(KEY_SELECTED_PHOTOS);
+            for (Parcelable photo : selected) {
+                selectedPhotos.add((InstagramPhoto) photo);
+            }
+
+            hasMoreItems = savedInstanceState.getBoolean(KEY_HAS_MORE_PHOTOS);
+            nextPageRequest = savedInstanceState.getParcelable(KEY_NEXT_PAGE_REQUEST);
+        }
+
+        adapter = new InstagramPhotoAdapter(photos);
+        gridView.setAdapter(adapter);
+        gridView.setHasMoreItems(hasMoreItems);
         gridView.setChoiceMode(GridView.CHOICE_MODE_MULTIPLE_MODAL);
         gridView.setMultiChoiceModeListener(new MultiChoiceModeListener());
 
@@ -85,8 +114,6 @@ public class InstagramGalleryActivity extends Activity {
             }
         });
 
-
-
         gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
@@ -94,6 +121,16 @@ public class InstagramGalleryActivity extends Activity {
                 gridView.setItemChecked(position, !checked);
             }
         });
+
+    }
+
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putParcelableArray(KEY_SELECTED_PHOTOS, selectedPhotos.toArray(new InstagramPhoto[0]));
+        outState.putBoolean(KEY_HAS_MORE_PHOTOS, gridView.hasMoreItems());
+        outState.putParcelableArray(KEY_FETCHED_PHOTOS, adapter.getItems().toArray(new InstagramPhoto[0]));
+        outState.putParcelable(KEY_NEXT_PAGE_REQUEST, nextPageRequest);
     }
 
     private void showErrorDialog(String message) {
@@ -146,6 +183,14 @@ public class InstagramGalleryActivity extends Activity {
 
     private class InstagramPhotoAdapter extends PagingBaseAdapter<InstagramPhoto> {
 
+        public InstagramPhotoAdapter(List<InstagramPhoto> items) {
+            super(items);
+        }
+
+        public InstagramPhotoAdapter() {
+            super();
+        }
+
         @Override
         public int getCount() {
             return items.size();
@@ -195,11 +240,15 @@ public class InstagramGalleryActivity extends Activity {
     public class MultiChoiceModeListener implements
             GridView.MultiChoiceModeListener {
 
-        private final HashSet<InstagramPhoto> selectedPhotos = new HashSet<>();
+
 
         public boolean onCreateActionMode(ActionMode mode, Menu menu) {
             MenuInflater inflater = getMenuInflater();
             inflater.inflate(R.menu.photo_selection_menu, menu);
+
+            int selectCount = gridView.getCheckedItemCount();
+            mode.setTitle("" + selectCount);
+
             return true;
         }
 

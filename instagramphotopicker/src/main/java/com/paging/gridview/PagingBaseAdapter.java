@@ -28,5 +28,7 @@ public abstract class PagingBaseAdapter<T> extends BaseAdapter {
 		notifyDataSetChanged();
 	}
 
-
+    public List<T> getItems() {
+        return items;
+    }
 }
