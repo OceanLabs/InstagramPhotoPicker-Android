@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">InstagramPhotoPicker</string>
+    <string name="app_name">Sample App</string>
 
     <string name="hello_world">Launch Instagram Picker!</string>
     <string name="action_settings">Settings</string>
