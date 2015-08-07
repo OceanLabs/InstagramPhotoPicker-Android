@@ -6,7 +6,8 @@ It takes care of all authentication with Instagram as and when necessary. It wil
 
 ## Screenshots
 
-![Preview](https://github.com/OceanLabs/InstagramPhotoPicker-Android/raw/master/preview.gif)
+[![Preview](https://github.com/OceanLabs/InstagramPhotoPicker-Android/raw/master/screenshot.png)](https://vimeo.com/135676657)
+
 
 ## Requirements
 
@@ -29,7 +30,7 @@ This should download the aar dependency at which point you'll have access to the
 
 ## Usage
 
-You need to have set up your application correctly to work with Instagram by registering a new Instagram application here: https://instagram.com/developer/ . For the redirect uri use something like `your-app-scheme://instagram-callback`.
+You need to have set up your application correctly to work with Instagram by registering a new Instagram application here: https://instagram.com/developer/ . For the redirect uri use something link `your-app-scheme://instagram-callback`.
 
 To launch the Instagram Photo Picker:
 
