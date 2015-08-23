@@ -23,7 +23,7 @@ import java.util.List;
 /**
  * Created by deon on 03/08/15.
  */
-public class InstagramMediaRequest implements Parcelable {
+class InstagramMediaRequest implements Parcelable {
 
     private static final String GENERIC_NETWORK_EXCEPTION_MESSAGE = "Failed to reach Instagram. Please check your internet connectivity and try again";
     private static final String MEDIA_URL_ENDPOINT = "https://api.instagram.com/v1/users/self/media/recent";

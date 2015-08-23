@@ -1,4 +1,4 @@
-package com.paging.gridview;
+package ly.kite.instagramphotopicker;
 
 import android.content.Context;
 import android.util.AttributeSet;
@@ -7,7 +7,7 @@ import android.widget.LinearLayout;
 import ly.kite.instagramphotopicker.R;
 
 
-public class LoadingView extends LinearLayout {
+class LoadingView extends LinearLayout {
 
 	public LoadingView(Context context) {
 		super(context);

@@ -1,4 +1,4 @@
-package com.paging.gridview;
+package ly.kite.instagramphotopicker;
 
 import android.content.Context;
 import android.util.AttributeSet;
@@ -10,7 +10,7 @@ import java.util.List;
 import in.srain.cube.views.GridViewWithHeaderAndFooter;
 
 
-public class PagingGridView extends GridViewWithHeaderAndFooter {
+class PagingGridView extends GridViewWithHeaderAndFooter {
 
 	public interface Pagingable {
 		void onLoadMoreItems();

@@ -16,8 +16,6 @@ import android.widget.AdapterView;
 import android.widget.GridView;
 import android.widget.ImageView;
 
-import com.paging.gridview.PagingBaseAdapter;
-import com.paging.gridview.PagingGridView;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;

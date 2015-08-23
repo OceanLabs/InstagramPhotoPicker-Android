@@ -1,4 +1,4 @@
-<com.paging.gridview.PagingGridView xmlns:android="http://schemas.android.com/apk/res/android"
+<ly.kite.instagramphotopicker.PagingGridView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/gridview"
     android:layout_width="match_parent"

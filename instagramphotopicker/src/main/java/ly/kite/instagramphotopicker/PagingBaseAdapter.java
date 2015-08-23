@@ -1,4 +1,4 @@
-package com.paging.gridview;
+package ly.kite.instagramphotopicker;
 
 import android.widget.BaseAdapter;
 
@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public abstract class PagingBaseAdapter<T> extends BaseAdapter {
+abstract class PagingBaseAdapter<T> extends BaseAdapter {
 
 	protected List<T> items;
 
