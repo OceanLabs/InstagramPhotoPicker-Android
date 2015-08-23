@@ -2,7 +2,9 @@ package ly.kite.instagramphotopicker;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
+import android.os.Parcelable;
 import android.webkit.CookieManager;
 import android.webkit.CookieSyncManager;
 import android.webkit.WebView;
@@ -36,6 +38,13 @@ public class InstagramPhotoPicker {
         }
 
         InstagramLoginActivity.startLoginForResult(activity, clientId, redirectUri, requestCode);
+    }
+
+    public static InstagramPhoto[] getResultPhotos(Intent data) {
+        Parcelable[] photos = data.getParcelableArrayExtra(InstagramPhotoPicker.EXTRA_SELECTED_PHOTOS);
+        InstagramPhoto[] instagramPhotos = new InstagramPhoto[photos.length];
+        System.arraycopy(photos, 0, instagramPhotos, 0, photos.length);
+        return instagramPhotos;
     }
 
     static String getAccessToken(Context context) {

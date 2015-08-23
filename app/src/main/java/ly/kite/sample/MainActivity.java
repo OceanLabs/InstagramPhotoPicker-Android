@@ -33,10 +33,7 @@ public class MainActivity extends ActionBarActivity {
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (requestCode == REQUEST_CODE_INSTAGRAM_PICKER) {
             if (resultCode == Activity.RESULT_OK) {
-                Parcelable[] photos = data.getParcelableArrayExtra(InstagramPhotoPicker.EXTRA_SELECTED_PHOTOS);
-                InstagramPhoto[] instagramPhotos = new InstagramPhoto[photos.length];
-                System.arraycopy(photos, 0, instagramPhotos, 0, photos.length);
-
+                InstagramPhoto[] instagramPhotos = InstagramPhotoPicker.getResultPhotos(data);
                 Toast.makeText(this, "User selected " + instagramPhotos.length + " Instagram photos", Toast.LENGTH_SHORT).show();
                 for (int i = 0; i < instagramPhotos.length; ++i) {
                     Log.i("dbotha", "Photo: " + instagramPhotos[i].getFullURL());
