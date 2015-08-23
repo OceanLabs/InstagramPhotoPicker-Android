@@ -10,12 +10,9 @@ import android.view.MenuItem;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
-import android.widget.Button;
 
 import java.io.UnsupportedEncodingException;
 import java.net.URLDecoder;
-
-import kite.ly.instagramphotopicker.R;
 
 
 public class InstagramLoginActivity extends Activity {

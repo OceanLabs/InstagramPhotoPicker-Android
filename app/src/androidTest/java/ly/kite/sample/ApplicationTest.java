@@ -1,4 +1,4 @@
-package kite.ly.sample;
+package ly.kite.sample;
 
 import android.app.Application;
 import android.test.ApplicationTestCase;

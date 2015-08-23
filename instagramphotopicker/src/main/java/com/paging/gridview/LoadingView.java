@@ -4,7 +4,7 @@ import android.content.Context;
 import android.util.AttributeSet;
 import android.widget.LinearLayout;
 
-import kite.ly.instagramphotopicker.R;
+import ly.kite.instagramphotopicker.R;
 
 
 public class LoadingView extends LinearLayout {
