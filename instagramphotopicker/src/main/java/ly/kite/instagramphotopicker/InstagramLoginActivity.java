@@ -2,6 +2,7 @@ package ly.kite.instagramphotopicker;
 
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.app.Fragment;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.net.Uri;
@@ -29,6 +30,13 @@ public class InstagramLoginActivity extends Activity {
         i.putExtra(EXTRA_CLIENT_ID, clientId);
         i.putExtra(EXTRA_REDIRECT_URI, redirectUri);
         activity.startActivityForResult(i, requestCode);
+    }
+
+    public static void startLoginForResult(Fragment fragment, String clientId, String redirectUri, int requestCode) {
+        Intent i = new Intent(fragment.getActivity(), InstagramLoginActivity.class);
+        i.putExtra(EXTRA_CLIENT_ID, clientId);
+        i.putExtra(EXTRA_REDIRECT_URI, redirectUri);
+        fragment.startActivityForResult(i, requestCode);
     }
 
     private WebView webview;

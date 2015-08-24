@@ -2,6 +2,7 @@ package ly.kite.instagramphotopicker;
 
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.app.Fragment;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Parcelable;
@@ -35,6 +36,11 @@ public class InstagramGalleryActivity extends Activity {
     static void startForResult(Activity activity, int requestCode) {
         Intent i = new Intent(activity, InstagramGalleryActivity.class);
         activity.startActivityForResult(i, requestCode);
+    }
+
+    static void startForResult(Fragment fragment, int requestCode) {
+        Intent i = new Intent(fragment.getActivity(), InstagramGalleryActivity.class);
+        fragment.startActivityForResult(i, requestCode);
     }
 
     private PagingGridView gridView;

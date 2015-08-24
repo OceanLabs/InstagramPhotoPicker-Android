@@ -1,6 +1,7 @@
 package ly.kite.instagramphotopicker;
 
 import android.app.Activity;
+import android.app.Fragment;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -39,6 +40,21 @@ public class InstagramPhotoPicker {
 
         InstagramLoginActivity.startLoginForResult(activity, clientId, redirectUri, requestCode);
     }
+
+    public static void startPhotoPickerForResult(Fragment fragment, String clientId, String redirectUri, int requestCode) {
+        String accessToken = getAccessToken(fragment.getActivity());
+        if (accessToken != null) {
+            if (clientId.equals(cachedClientId)) {
+                InstagramGalleryActivity.startForResult(fragment, requestCode);
+                return;
+            } else {
+                logout(fragment.getActivity()); // clear cache & preferences if any.
+            }
+        }
+
+        InstagramLoginActivity.startLoginForResult(fragment, clientId, redirectUri, requestCode);
+    }
+
 
     public static InstagramPhoto[] getResultPhotos(Intent data) {
         Parcelable[] photos = data.getParcelableArrayExtra(InstagramPhotoPicker.EXTRA_SELECTED_PHOTOS);
