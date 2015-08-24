@@ -22,7 +22,6 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 
-
 public class InstagramGalleryActivity extends Activity {
 
     private static final String KEY_SELECTED_PHOTOS = "ly.kite.instagramphotopicker.KEY_SELECTED_PHOTOS";
