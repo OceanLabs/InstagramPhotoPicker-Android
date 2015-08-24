@@ -1,4 +1,16 @@
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:1.2.3'
+    }
+}
 apply plugin: 'com.android.library'
+
+repositories {
+    mavenCentral()
+}
 
 android {
     compileSdkVersion 22
