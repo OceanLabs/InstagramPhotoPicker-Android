@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-abstract class PagingBaseAdapter<T> extends BaseAdapter {
+public abstract class PagingBaseAdapter<T> extends BaseAdapter {
 
 	protected List<T> items;
 

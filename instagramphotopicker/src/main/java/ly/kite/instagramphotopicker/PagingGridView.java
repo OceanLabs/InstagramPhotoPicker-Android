@@ -10,7 +10,7 @@ import java.util.List;
 import in.srain.cube.views.GridViewWithHeaderAndFooter;
 
 
-class PagingGridView extends GridViewWithHeaderAndFooter {
+public class PagingGridView extends GridViewWithHeaderAndFooter {
 
 	public interface Pagingable {
 		void onLoadMoreItems();

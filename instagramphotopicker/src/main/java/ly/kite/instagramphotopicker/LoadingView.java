@@ -7,7 +7,7 @@ import android.widget.LinearLayout;
 import ly.kite.instagramphotopicker.R;
 
 
-class LoadingView extends LinearLayout {
+public class LoadingView extends LinearLayout {
 
 	public LoadingView(Context context) {
 		super(context);
