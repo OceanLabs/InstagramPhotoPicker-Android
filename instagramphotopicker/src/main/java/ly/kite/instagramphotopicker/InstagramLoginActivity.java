@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MenuItem;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
@@ -17,6 +18,9 @@ import java.net.URLDecoder;
 
 
 public class InstagramLoginActivity extends Activity {
+
+  static private final String   LOG_TAG           = "InstagramLoginActivity";
+  static private final boolean  DEBUGGING_ENABLED = false;
 
     private static final String GENERIC_LOGIN_ERROR_MESSAGE = "You need to authorise the application to allow photo picking. Please try again.";
 
@@ -140,6 +144,8 @@ public class InstagramLoginActivity extends Activity {
     private final WebViewClient webViewClient =  new WebViewClient() {
         public boolean shouldOverrideUrlLoading(WebView view, String url) {
 
+        if ( DEBUGGING_ENABLED ) Log.d( LOG_TAG, "shouldOverrideUrlLoading( view, url = " + url.toString() + " )" );
+
             if (url != null && url.startsWith(redirectUri)) {
                 Uri uri = Uri.parse(url);
                 String error = uri.getQueryParameter("error");
@@ -162,13 +168,19 @@ public class InstagramLoginActivity extends Activity {
 
         public void onPageStarted(WebView view, String url, Bitmap favicon) {
 
+        if ( DEBUGGING_ENABLED ) Log.d( LOG_TAG, "onPageStarted( view, url = " + url.toString() + ", favicon )" );
+
         }
 
         public void onPageFinished(WebView view, String url) {
 
+        if ( DEBUGGING_ENABLED ) Log.d( LOG_TAG, "onPageFinished( view, url = " + url.toString() + " )" );
+
         }
 
         public void onLoadResource(WebView view, String url) {
+
+        if ( DEBUGGING_ENABLED ) Log.d( LOG_TAG, "onLoadResources( view, url = " + url.toString() + " )" );
 
         }
     };

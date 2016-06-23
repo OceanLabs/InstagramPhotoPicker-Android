@@ -16,7 +16,8 @@ import ly.kite.instagramphotopicker.InstagramPhotoPicker;
 public class MainActivity extends ActionBarActivity {
 
     private static final String CLIENT_ID = "aa314a392fdd4de7aa287a6614ea8897";
-    private static final String REDIRECT_URI = "psapp://instagram-callback";
+    //private static final String REDIRECT_URI = "psapp://instagram-callback";
+    private static final String REDIRECT_URI = "http://instagram-callback";
     private static final int REQUEST_CODE_INSTAGRAM_PICKER = 88;
 
     @Override
