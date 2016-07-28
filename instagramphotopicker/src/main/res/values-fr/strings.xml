@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Parcourir les photos Instagram</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="action_logout">Se déconnecter</string>
+    <string name="title_activity_login">S\'identifier</string>
+    <string name="title_activity_instagram_gallery">Les photos Instagram</string>
+    <string name="loading">Chargement&#8230;</string>
+</resources>

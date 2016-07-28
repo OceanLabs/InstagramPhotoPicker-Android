@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Instagram fotovælger</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="action_logout">Log ud</string>
+    <string name="title_activity_login">Log ind</string>
+    <string name="title_activity_instagram_gallery">Instagrambilleder</string>
+    <string name="loading">Uploader&#8230;</string>
+</resources>
