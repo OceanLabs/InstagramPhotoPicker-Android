@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Seleccionador de fotos Instagram</string>
+    <string name="action_logout">Cerrar sesión</string>
+    <string name="title_activity_login">Iniciar sesión</string>
+    <string name="title_activity_instagram_gallery">Fotos de Instagram</string>
+    <string name="loading">Cargando&#8230;</string>
+</resources>
