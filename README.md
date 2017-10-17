@@ -44,6 +44,7 @@ static final String CLIENT_ID = "YOUR_CLIENT_ID";
 static final String REDIRECT_URI = "YOUR-APP-SCHEME://instagram-callback";
 static final int REQUEST_CODE_INSTAGRAM_PICKER = 1;
 
+InstagramGalleryActivity.maxSelectedCount =  6;
 InstagramPhotoPicker.startPhotoPickerForResult(this, CLIENT_ID, REDIRECT_URI, REQUEST_CODE_INSTAGRAM_PICKER);
 ```
 
