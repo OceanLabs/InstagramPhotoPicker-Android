@@ -32,6 +32,7 @@ public class InstagramGalleryActivity extends Activity {
 
     private static final int REQUEST_CODE_LOGIN = 99;
     private final HashSet<InstagramPhoto> selectedPhotos = new HashSet<>();
+    public static int maxSelectedCount = -1;
 
     static void startForResult(Activity activity, int requestCode) {
         Intent i = new Intent(activity, InstagramGalleryActivity.class);
@@ -115,7 +116,14 @@ public class InstagramGalleryActivity extends Activity {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
                 boolean checked = gridView.isItemChecked(position);
-                gridView.setItemChecked(position, !checked);
+                
+                if(checked){
+
+                    gridView.setItemChecked(position, false);
+                }else if(gridView.getCheckedItemCount() < maxSelectedCount || maxSelectedCount == -1){
+
+                    gridView.setItemChecked(position, true);
+                }
             }
         });
 
@@ -271,7 +279,19 @@ public class InstagramGalleryActivity extends Activity {
 
         public void onItemCheckedStateChanged(ActionMode mode, int position, long id, boolean checked) {
             int selectCount = gridView.getCheckedItemCount();
-            mode.setTitle("" + selectCount);
+            
+            if(maxSelectedCount != -1){
+
+                if(checked && selectCount > maxSelectedCount){
+                    gridView.setItemChecked(position, false);
+                    return;
+                }
+
+                mode.setTitle(maxSelectedCount + " / " + selectCount);
+            }else{
+                mode.setTitle("" + selectCount);
+            }
+            
             InstagramPhotoAdapter adapter = (InstagramPhotoAdapter) gridView.getOriginalAdapter();
             adapter.notifyDataSetChanged();
 
